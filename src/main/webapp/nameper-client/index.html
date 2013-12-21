@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <title>Nameper, find that name!</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Cabin|Lobster' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap-select.css" type="text/css">
+
+</head>
+<body>
+<script type="text/template" id="interaction-template">
+    <div>
+        <div class="row" id="nameInputRow">
+            <div id="name-box" class="col-lg-12 text-center">
+                <input class="input-lg display-name" placeholder="Name" readonly="true" value="<%- name%>"
+                       id="name-input" style="margin-left:35px"/>
+                <button type="button" class="btn btn-default btn-sm" id="options-btn">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+            </div>
+        </div>
+        <div class="row" name="optionsRow">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center" id="tween-container">
+                <h6 id="tween-content" class="text-center option-margin">Options</h6>
+
+                <div class="col-sm-offset-1 col-sm-pull-3">
+                    <select class="selectpicker show-tick show-menu-arrow" data-header='Send me a name every...'
+                            id="poll-picker">
+                        <option value="0">only when I click</option>
+                        <option value="1">1 second</option>
+                        <option value="2">2 seconds</option>
+                        <option value="5">5 seconds</option>
+                        <option value="10">10 seconds</option>
+                        <option value="20">20 seconds</option>
+                    </select>
+
+                    <select class="selectpicker show-menu-arrow" multiple title='Choose a gender...or both!'
+                            id="gender-picker">
+                        <option value="boy">Boy</option>
+                        <option value="girl">Girl</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-margin" id="genBtnRow">
+            <div class="col-lg-offset-3 col-lg-6 text-center">
+                <button id="name-btn" class="btn btn-primary btn-lg">Fetch me a name!</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--Logo div and insertion point for template-->
+<div class="my-fluid-container">
+    <div class="row logo-row-margin" id="logoRow">
+        <div class="col-xs-12 text-center" id="logo">
+            <h1 style="cursor: pointer;">Nameper</h1>
+
+            <p class="lead">Random help with baby names...</p>
+        </div>
+    </div>
+    <div class="container" id="content-container"></div>
+</div>
+
+<div style="position: fixed; right: -500px; top: 150px;">
+    <h1>Sample</h1>
+</div>
+
+<!-- The Scriptions -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/vendor/bootstrap.js"></script>
+<script src="js/vendor/bootstrap-select.js"></script>
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/vendor/underscore.js"></script>
+<script src="js/vendor/backbone.js"></script>
+<script src="js/models/NameModel.js"></script>
+<script src="js/views/MainView.js"></script>
+<script src="js/animations/Swing.js"></script>
+
+<!-- kick the tires and light the fires -->
+<script>
+    swing('#logo');
+    $('#logoRow').on('click', function () {
+        swing('#logo')
+    });
+    var app = {};
+    app.nameView = new views.NameView();
+</script>
+</body>
+</html>
