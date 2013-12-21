@@ -49,7 +49,7 @@ public class NameResource {
             name.setName((String) object.get("name"));
             name.setGender((String) object.get("gender"));
         } catch (UnknownHostException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         } finally {
             mongoClient.close();
         }
