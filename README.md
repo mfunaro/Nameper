@@ -2,20 +2,22 @@ Nameper
 =======
 
 Frontend:
-	HTML5/Javascript
+	HTML5/Javascript -- 
 		Frameworks:
 			Backbone.js
 			Green Sock animation platform
 			Bootstrap
+			
 Backend:
 	Java RESTful web service
-	MongoDB database
+	MongoDB database --
 		Frameworks:
 			Jax-RS
 			Maven for build and dependency management
 			
+			
 Hosting:
-	DigitalOcean droplet (VPS)
+	DigitalOcean droplet (VPS) --
 		Services:
 			Tomcat7
 			MongoDB
