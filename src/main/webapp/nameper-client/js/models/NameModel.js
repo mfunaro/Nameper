@@ -15,8 +15,9 @@ models.NameModel = Backbone.Model.extend({
         _.bindAll(this, "startPolling", "executePolling", "onFetch");
         this.bind('change:genderToFetch', this.updateUrl);
     },
+    // '/nameper/nameper-service/nameResource/random/' local
     fetch: function (options) {
-        options = _.defaults((options || {}), {url: 'http://localhost:8080/nameper/nameper-service/nameResource/random/'
+        options = _.defaults((options || {}), {url: '/service/nameper-service/nameResource/random/'
             + this.attributes.genderToFetch});
         return Backbone.Model.prototype.fetch.call(this, options);
     },

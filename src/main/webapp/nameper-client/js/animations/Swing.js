@@ -22,7 +22,6 @@ function swing(target) {
     TweenMax.to(vars, vars.duration, { power: 0, delay: 0, onStart: nextSwing, onStartParams: [vars] });
 }
 
-
 function nextSwing(vars) {
     if (vars.power > 0) {
         vars.rotation = (vars.rotation > 0 ? -1 : 1) * vars.maxrotation * vars.power;

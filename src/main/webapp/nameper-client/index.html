@@ -53,7 +53,24 @@
     </div>
 </script>
 
-<!--Logo div and insertion point for template-->
+<script type="text/template" id="favorites-template">
+    <div id="slideout" class="sidebar text-center container" style="z-index: 999">
+        <div id="clickme">
+            <div id="posdiv" class="favorite-tab">
+                <p><h5 id="favs">Favorites</h5></p>
+            </div>
+        </div>
+        <div id="slidecontent" class="col-lg-11 text-center">
+            <ui style="list-style-type:none;" id="favorite-list"></ui>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="favorite-template">
+    <%- name%>
+</script>
+
+<!--Logo div and insertion points for templates-->
 <div class="my-fluid-container">
     <div class="row logo-row-margin" id="logoRow">
         <div class="col-xs-12 text-center" id="logo">
@@ -63,10 +80,7 @@
         </div>
     </div>
     <div class="container" id="content-container"></div>
-</div>
-
-<div style="position: fixed; right: -500px; top: 150px;">
-    <h1>Sample</h1>
+    <div class="container" id="favorites-container"></div>
 </div>
 
 <!-- The Scriptions -->
@@ -83,12 +97,32 @@
 
 <!-- kick the tires and light the fires -->
 <script>
+    /***** LOGO STUFF *****/
+        // Swing animation for the logo
     swing('#logo');
+    // Swing again when clicked
     $('#logoRow').on('click', function () {
         swing('#logo')
     });
+
+    /***** MAIN APPLICATION *****/
     var app = {};
+    app.favorieView = new views.FavoritesView();
     app.nameView = new views.NameView();
+    app.nameView.setView(app.favorieView);
+
+    /***** FAVORITES STUFF *****/
+    var sidebarOut = false;
+    // Click listener for favorites slideout
+    $('#clickme').mouseup(function (e) {
+        if (sidebarOut) {
+            TweenLite.to(slideout, 2, {right: -285, ease: Elastic.easeOut});
+            sidebarOut = false;
+        } else {
+            TweenLite.to(slideout, 2, {right: 0, ease: Elastic.easeOut});
+            sidebarOut = true;
+        }
+    });
 </script>
 </body>
 </html>

@@ -23,7 +23,8 @@ views.NameView = Backbone.View.extend({
         "click #name-btn": "getName",
         "click #options-btn": "tween",
         "change #poll-picker": "setButtonText",
-        "change #gender-picker": "setGender"
+        "change #gender-picker": "setGender",
+        "dblclick #name-input": "addOne"
     },
     getName: function () {
         if (this.$("#poll-picker option:selected").val() != 0) {
@@ -43,7 +44,7 @@ views.NameView = Backbone.View.extend({
         if (this.model.toJSON().gender === 'F') {
             field.css('background-color', 'pink');
         } else {
-            field.css('background-color', 'rgb(167, 167, 253)');
+            field.css('background-color', 'dodgerblue');
         }
         field.val(this.model.toJSON().name);
     },
@@ -83,6 +84,51 @@ views.NameView = Backbone.View.extend({
             this.model.set('genderToFetch', "both");
         } else {
             this.model.set('genderToFetch', this.$('#gender-picker option:selected').val());
+        }
+    },
+    setView: function (view) {
+        this.view = view;
+    },
+    addOne: function () {
+        this.view.addOne(this.model);
+    }
+});
+
+views.FavoritesView = Backbone.View.extend({
+    el: '#favorites-container',
+    model: new models.NameModel(),
+    template: _.template($('#favorites-template').html()),
+    initialize: function () {
+        this.render();
+    },
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    },
+    addOne: function (name) {
+        if (name.attributes.name) {
+            var view = new views.FavoriteView({model: name});
+            $('#favorite-list').append(view.render().el);
+        }
+    }
+});
+
+views.FavoriteView = Backbone.View.extend({
+    tagName: 'li',
+    template: _.template($('#favorite-template').html()),
+    initialize: function () {
+        this.render();
+    },
+    render: function () {
+        this.checkGender();
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    },
+    checkGender: function () {
+        if (this.model.attributes.gender === "F") {
+            $(this.el).addClass('female');
+        } else {
+            $(this.el).addClass('male');
         }
     }
 });
