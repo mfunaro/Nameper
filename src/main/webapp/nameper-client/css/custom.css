@@ -26,6 +26,12 @@ h6 {
     color: white;
 }
 
+.help-text {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 25px;
+    color: #272361;
+}
+
 p {
     font-family: 'Cabin', sans-serif;
     color: white;
@@ -154,4 +160,33 @@ body {
     font-size: 25px;
     color: pink;
     display: block;
+}
+
+.name-input-help {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: -1000px;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.options-help {
+    z-index: -1;
+    position: absolute;
+    top: 0px;
+    left: -1000px;
+    padding-left: 0px;
+    text-align: center;
+
+}
+
+.favoritess-help {
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    left: -1000px;
+    padding-left: 0px;
+    text-align: center;
+
 }
