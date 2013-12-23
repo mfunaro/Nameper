@@ -29,14 +29,15 @@ views.NameView = Backbone.View.extend({
     getName: function () {
         if (this.$("#poll-picker option:selected").val() != 0) {
             if (this.model.polling) {
-                this.$('#name-btn').text("Send me names!");
+                this.$('#name-btn').text("Show me names!");
                 this.model.stopPolling();
             } else {
-                this.$('#name-btn').text("Stop sending names...");
+                this.$('#name-btn').text("Stop showing names...");
                 this.model.startPolling(this.$("#poll-picker option:selected").val());
+
             }
         } else {
-            this.model.fetch({})
+            this.model.fetchName();
         }
     },
     updateNameBox: function () {
