@@ -24,10 +24,8 @@ models.NameModel = Backbone.Model.extend({
     initialize: function () {
         _.bindAll(this, "startPolling", "executePolling", "onFetch");
     },
-    // '/nameper/nameper-service/nameResource/random/' local
-    // '/service/nameper-service/nameResource/random/' sever
     fetch: function (options) {
-        options = _.defaults((options || {}), {url: '/nameper/nameper-service/nameResource/random/'
+        options = _.defaults((options || {}), {url: '/service/nameper-service/nameResource/random/'
             + this.attributes.genderToFetch});
         return Backbone.Model.prototype.fetch.call(this, options);
     },

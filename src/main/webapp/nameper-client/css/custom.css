@@ -73,7 +73,6 @@ body {
     margin: 5px;
     padding: 5px;
     text-align: justify;
-
 }
 
 .sidebar {
@@ -110,6 +109,7 @@ body {
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 .favorite-tab {
@@ -146,6 +146,7 @@ body {
 
 #slidecontent {
     float: left;
+    min-height: 240px;
 }
 
 .male {
@@ -188,5 +189,13 @@ body {
     left: -1000px;
     padding-left: 0px;
     text-align: center;
+}
 
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

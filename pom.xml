@@ -68,7 +68,7 @@
                 </dependencies>
                 <configuration>
                     <webAppConfig>
-                        <contextPath>/nameper</contextPath>
+                        <contextPath>/service</contextPath>
                     </webAppConfig>
                     <webAppSourceDirectory>target/${project.artifactId}-${project.version}</webAppSourceDirectory>
                     <stopPort>8079</stopPort>

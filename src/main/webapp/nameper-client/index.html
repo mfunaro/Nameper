@@ -57,7 +57,7 @@
 <script type="text/template" id="favorites-template">
     <div id="slideout" class="sidebar text-center container" style="z-index: 3">
         <div id="clickme">
-            <div id="posdiv" class="favorite-tab">
+            <div id="posdiv" class="favorite-tab no-select">
                 <p><h5 id="favs">Favorites</h5></p>
             </div>
         </div>
@@ -74,20 +74,20 @@
 <!--Logo div and insertion points for templates-->
 <div class="my-fluid-container">
     <div>
-        <p id="helpText" class="help-text" style="cursor: pointer">Show Help</p>
+        <span id="helpText" class="help-text no-select" style="cursor: pointer">Show Help</span>
     </div>
-    <div class="row logo-row-margin" id="logoRow">
+    <div class="row logo-row-margin no-select" id="logoRow">
         <div class="col-xs-12 text-center" id="logo">
             <h1 style="cursor: pointer;">Nameper</h1>
 
             <p class="lead">Random help with baby names...</p>
         </div>
     </div>
-    <div class="container" id="content-container"></div>
+    <div class="container no-select" id="content-container"></div>
     <div class="container" id="favorites-container"></div>
 </div>
 
-<div class="name-input-help" id="nameInputHelp">
+<div class="name-input-help no-select" id="nameInputHelp">
     <div class="col-xs-12">
         <img src="img/help-arrow-right.png" style="text-align: right"/>
 
@@ -95,7 +95,7 @@
     </div>
 </div>
 
-<div class="options-help" id="optionsHelp">
+<div class="options-help no-select" id="optionsHelp">
     <div class="col-lg-12">
         <img src="img/help-arrow-left.png" style="text-align: right"/>
 
@@ -103,7 +103,7 @@
     </div>
 </div>
 
-<div class="favoritess-help" id="favoriteHelp">
+<div class="favoritess-help no-select" id="favoriteHelp">
     <div class="col-xs-12">
         <img src="img/help-arrow-right.png" style="text-align: right"/>
 
