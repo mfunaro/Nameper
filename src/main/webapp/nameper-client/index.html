@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <head>
     <title>Nameper, find that name!</title>
+
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
     <link rel="stylesheet" href="css/custom.css">
+    <!--[if IE]>
+    <link href="css/iecustom.css" rel="stylesheet" type="text/css"/><![endif]-->
+
+
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Cabin|Lobster' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap-select.css" type="text/css">
@@ -13,44 +18,66 @@
 <script type="text/template" id="interaction-template">
     <div>
         <div class="row" id="nameInputRow">
-            <div id="name-box" class="col-lg-12 text-center">
-                <input class="input-lg display-name" placeholder="Name" readonly="true" value="<%- name%>"
-                       id="name-input" style="margin-left:35px"/>
-                <button type="button" class="btn btn-default btn-sm" id="options-btn">
+            <div id="name-box" class="col-xs-offset-4 col-xs-4 pull-left">
+                <div class="display-name" id="name-input"><label><%- name%></label></div>
+
+                <button type="button" class="btn btn-default btn-sm pull-right inner-btn" id="options-btn">
                     <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-sm pull-right inner-btn" id="heart-btn">
+                    <span class="glyphicon glyphicon-heart"></span>
                 </button>
             </div>
         </div>
         <div class="row" name="optionsRow">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6 text-center" id="tween-container">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6" id="tween-container">
                 <h6 id="tween-content" class="text-center option-margin">Options</h6>
 
-                <div class="col-sm-offset-1 col-sm-pull-3">
-                    <select class="selectpicker show-tick show-menu-arrow" data-header='Send me a name every...'
-                            id="poll-picker">
-                        <option value="0">only when I click</option>
-                        <option value="1">1 second</option>
-                        <option value="2">2 seconds</option>
-                        <option value="5">5 seconds</option>
-                        <option value="10">10 seconds</option>
-                        <option value="20">20 seconds</option>
-                    </select>
-
-                    <select class="selectpicker show-menu-arrow" multiple title='Choose a gender...or both!'
-                            id="gender-picker">
-                        <option value="boy">Boy</option>
-                        <option value="girl">Girl</option>
-                    </select>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6" style="display: inline-block;">
+                            <div class="col-xs-4">
+                                <label class="pull-right options-text">Time Interval: </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <select class="pull-left selectpicker show-tick show-menu-arrow"
+                                        data-header='Send me a name every...'
+                                        id="poll-picker">
+                                    <option value="0">only when I click</option>
+                                    <option value="1">1 second</option>
+                                    <option value="2">2 seconds</option>
+                                    <option value="5">5 seconds</option>
+                                    <option value="10">10 seconds</option>
+                                    <option value="20">20 seconds</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6" style="display: inline-block;">
+                            <div class="col-xs-4">
+                                <label class="pull-right options-text">Gender: </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <select class="selectpicker show-menu-arrow" multiple title='Choose a gender...or both!'
+                                        id="gender-picker">
+                                    <option value="boy">Boy</option>
+                                    <option value="girl">Girl</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row row-margin" id="genBtnRow">
-            <div class="col-lg-offset-3 col-lg-6 text-center">
-                <button id="name-btn" class="btn btn-primary btn-lg">Fetch me a name!</button>
-            </div>
+    <div class="row row-margin" id="genBtnRow">
+        <div class="col-lg-offset-3 col-lg-6 text-center">
+            <button id="name-btn" class="btn btn-primary btn-lg">Fetch me a name!</button>
         </div>
+    </div>
     </div>
 </script>
 
@@ -68,7 +95,10 @@
 </script>
 
 <script type="text/template" id="favorite-template">
-    <%- name%>
+    <div>
+        <span><label><%- name%></label><button class="destroy" style="left:100%"></button></span>
+
+    </div>
 </script>
 
 <!--Logo div and insertion points for templates-->
@@ -89,15 +119,16 @@
 
 <div class="name-input-help no-select" id="nameInputHelp">
     <div class="col-xs-12">
-        <img src="img/help-arrow-right.png" style="text-align: right"/>
+        <img src="img/help-arrow-right-white.png" style="text-align: right"/>
 
-        <p class="help-text">Double click here <br> to save the name to your favorites</p>
+        <p class="help-text">Click the name<br>or click the heart on the right <br> to add the name to your
+            favorites</p>
     </div>
 </div>
 
 <div class="options-help no-select" id="optionsHelp">
     <div class="col-lg-12">
-        <img src="img/help-arrow-left.png" style="text-align: right"/>
+        <img src="img/help-arrow-left-white.png" style="text-align: right"/>
 
         <p class="help-text">Click here to set options...</p>
     </div>
@@ -105,7 +136,7 @@
 
 <div class="favoritess-help no-select" id="favoriteHelp">
     <div class="col-xs-12">
-        <img src="img/help-arrow-right.png" style="text-align: right"/>
+        <img src="img/help-arrow-right-white.png" style="text-align: right"/>
 
         <p class="help-text">View your <br> favorite names by clicking here</p>
     </div>
@@ -172,7 +203,7 @@
     // Tween function for all the help divs
     app.tween = function (openTween) {
         if (openTween) {
-            TweenLite.to(nameInputHelp, 0.5, {left: app.position.left - app.nameInputHelpWidth * .71, top: app.position.top - app.nameInputHelpHeight * .25});
+            TweenLite.to(nameInputHelp, 0.5, {left: app.position.left - app.nameInputHelpWidth * .75, top: app.position.top - app.nameInputHelpHeight * .25});
             TweenLite.to(optionsHelp, 0.5, {top: app.optionsPosition.top - app.optionsHeight * .38, left: app.optionsPosition.left - app.optionsWidth * .1});
             TweenLite.to(favoriteHelp, 0.5, {left: app.favoritePosition.left - app.favoritsHelpWidth * .7, top: app.favoritePosition.top - app.favoritsHelpHeight * .65});
             helpout = true;

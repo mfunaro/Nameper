@@ -55,6 +55,5 @@ models.NameModel = Backbone.Model.extend({
         this.enableSync(true);
         this.fetch({});
         this.enableSync(false);
-
     }
 });

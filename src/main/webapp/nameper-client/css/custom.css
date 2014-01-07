@@ -29,7 +29,13 @@ h6 {
 .help-text {
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 25px;
-    color: #272361;
+    color: #fffdfb;
+}
+
+#helpText {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 32px;
+    color: #fffdfb;
 }
 
 p {
@@ -39,6 +45,7 @@ p {
 
 body {
     background-color: #108a93;
+    background-image: url("../img/name_background_20.png");
 }
 
 .logo-row-margin {
@@ -102,6 +109,13 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: pointer;
+}
+
+.options-text {
+    font-family: 'Cabin', sans-serif;
+    font-size: 15px;
+    color: #a3a19f;
 }
 
 .my-fluid-container {
@@ -109,7 +123,6 @@ body {
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .favorite-tab {
@@ -117,6 +130,7 @@ body {
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
     -o-transform: rotate(270deg);
+    -ms-transform: rotate(180deg);
     white-space: nowrap;
     display: block;
 }
@@ -199,3 +213,56 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
+
+#favorite-list li .destroy {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    position: absolute;
+    margin: auto 0;
+    font-size: 22px;
+    color: #fffaf1;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#favorite-list li .destroy:hover {
+    text-shadow: 0 0 1px #000, 0 0 10px rgba(253, 0, 0, 0.80);
+    -webkit-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    transform: scale(1.25);
+}
+
+#favorite-list li .destroy:after {
+    content: 'x';
+}
+
+#name-box {
+    border-radius: 10px;
+    display: inline-block;
+    border: 2px solid #F7F5F5;
+    background-color: aliceblue;
+    padding-right: 5px;
+    padding-bottom: 2px;
+
+}
+
+#name-input {
+    background-color: transparent;
+    font-family: 'Cabin', sans-serif;
+    font-size: 30px;
+    color: #3d3d3d;
+    border: none;
+    position: relative;
+    display: inline-block;
+}
+
+.inner-btn {
+    margin-top: 8px;
+}
+
+#options-btn {
+    margin-left: 5px;
+}
+

@@ -24,7 +24,8 @@ views.NameView = Backbone.View.extend({
         "click #options-btn": "tween",
         "change #poll-picker": "setButtonText",
         "change #gender-picker": "setGender",
-        "dblclick #name-input": "addOne"
+        "click #name-input": "addOne",
+        "click #heart-btn": "addOne"
     },
     getName: function () {
         if (this.$("#poll-picker option:selected").val() != 0) {
@@ -41,13 +42,13 @@ views.NameView = Backbone.View.extend({
         }
     },
     updateNameBox: function () {
-        var field = this.$('#name-input');
+        var field = this.$('#name-box');
         if (this.model.toJSON().gender === 'F') {
             field.css('background-color', 'pink');
         } else {
             field.css('background-color', 'dodgerblue');
         }
-        field.val(this.model.toJSON().name);
+        this.$('#name-input').text(this.model.toJSON().name);
     },
     setupTween: function () {
         this.tweenContainer = $("#tween-container");
@@ -111,12 +112,16 @@ views.FavoritesView = Backbone.View.extend({
             var view = new views.FavoriteView({model: name});
             $('#favorite-list').append(view.render().el);
         }
+
     }
 });
 
 views.FavoriteView = Backbone.View.extend({
     tagName: 'li',
     template: _.template($('#favorite-template').html()),
+    events: {
+        'click .destroy': 'clear'
+    },
     initialize: function () {
         this.render();
     },
@@ -131,5 +136,8 @@ views.FavoriteView = Backbone.View.extend({
         } else {
             $(this.el).addClass('male');
         }
+    },
+    clear: function () {
+        $(this.el).remove();
     }
 });
