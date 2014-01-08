@@ -44,8 +44,10 @@ p {
 }
 
 body {
+    z-index: -15;
     background-color: #108a93;
     background-image: url("../img/name_background_20.png");
+    overflow-x: hidden;
 }
 
 .logo-row-margin {
@@ -101,8 +103,6 @@ body {
 }
 
 .display-name {
-    border-color: #f5f5f5;
-    border-style: solid;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -133,10 +133,6 @@ body {
     -ms-transform: rotate(180deg);
     white-space: nowrap;
     display: block;
-}
-
-body {
-    overflow-x: hidden;
 }
 
 #slideout {
@@ -248,7 +244,7 @@ body {
 
 }
 
-#name-input {
+#name-input, #name-input-clone {
     background-color: transparent;
     font-family: 'Cabin', sans-serif;
     font-size: 30px;

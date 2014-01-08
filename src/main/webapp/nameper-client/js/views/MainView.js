@@ -24,8 +24,8 @@ views.NameView = Backbone.View.extend({
         "click #options-btn": "tween",
         "change #poll-picker": "setButtonText",
         "change #gender-picker": "setGender",
-        "click #name-input": "addOne",
-        "click #heart-btn": "addOne"
+        "click #name-input": "favoriteTweenAndAddOne",
+        "click #heart-btn": "favoriteTweenAndAddOne"
     },
     getName: function () {
         if (this.$("#poll-picker option:selected").val() != 0) {
@@ -35,7 +35,6 @@ views.NameView = Backbone.View.extend({
             } else {
                 this.$('#name-btn').text("Stop showing names...");
                 this.model.startPolling(this.$("#poll-picker option:selected").val());
-
             }
         } else {
             this.model.fetchName();
@@ -73,7 +72,6 @@ views.NameView = Backbone.View.extend({
         if (this.model.polling) {
             this.model.stopPolling();
         }
-
         if (this.$("#poll-picker option:selected").val() != 0) {
             this.$('#name-btn').text("Send me names!");
         } else {
@@ -91,8 +89,29 @@ views.NameView = Backbone.View.extend({
     setView: function (view) {
         this.view = view;
     },
+    favoriteTweenAndAddOne: function () {
+        // Get the position of the name input, so we can position our clone over it.
+        var offset = $("#name-input").offset();
+        var posY = offset.top - $(window).scrollTop();
+        var posX = offset.left - $(window).scrollLeft();
+
+        // Clone the name input and change the Id to differentiate, attach to body
+        var clone = $('#name-input').clone().attr('id', 'name-input-clone');
+        clone.prependTo('body');
+        // Reposition clone over the original name-input
+        $('#name-input-clone').css('position', 'absolute').css('left', posX).css('top', posY).css('z-index', '10').css('color', 'white');
+
+        // Animate the clone to the favorites slideout, onComplete call addOne()
+        TweenLite.to($('#name-input-clone'), 0.5, {left: $('#slideout').offset().left,
+            top: ($('#slideout').offset().top + $('#slideout').height()), onComplete: this.addOne, onCompleteScope: this,
+            ease: "Back.easeIn"});
+    },
     addOne: function () {
         this.view.addOne(this.model);
+        this.removeClone()
+    },
+    removeClone: function () {
+        $('#name-input-clone').remove();
     }
 });
 
@@ -112,7 +131,6 @@ views.FavoritesView = Backbone.View.extend({
             var view = new views.FavoriteView({model: name});
             $('#favorite-list').append(view.render().el);
         }
-
     }
 });
 
