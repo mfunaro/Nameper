@@ -22,7 +22,7 @@ Hosting:
 			Tomcat7
 			MongoDB
 			
-Current site running at www.theramblingcoder.com:8080/nameper
+Current site running at www.theramblingcoder.com/nameper
 			
 Nameper is a simplistic tool to help people in the quest for the perfect name. Whether that name be for a baby, pet, friend or on-line handle, nameper is the place to start, when you don't know where to start. 
 Nameper simply fetches you random names. You can select which gender you are querying for or just choose both and roll the dice. You can receive names on demand or have the site fetch you a name in a given interval or time.
